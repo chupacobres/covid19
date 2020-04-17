@@ -39,16 +39,17 @@ class GlobalStats extends React.Component {
         return ( 
             <div>
                 <h2>Global Statistics for Covid-19 as of {date}</h2>
+                
                 <p>New cases confirmed: {this.state.casesConfirmed}</p>
-                <br />
+                
                 <p>Total Cases Confirmed: {this.state.totalCases}</p>
-                <br />
+                
                 <p>New Deaths Confirmed: {this.state.newDeaths}</p>
-                <br />
+                
                 <p>Total Deaths Confirmed: {this.state.totalDeaths}</p>
-                <br />
+                
                 <p>New Cases Recovered: {this.state.newRecovered}</p>
-                <br />
+                
                 <p>Total Cases Recovered: {this.state.totalRecovered}</p>
             </div>
         )
