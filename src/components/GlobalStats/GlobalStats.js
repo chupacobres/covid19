@@ -1,7 +1,10 @@
 import React from "react";
 
+var tempDate = new Date();
+var date =    tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear()
 
 class GlobalStats extends React.Component {
+    
     constructor() {
         super()
         this.state = {
@@ -33,9 +36,9 @@ class GlobalStats extends React.Component {
     }
 
     render() {
-        return (
+        return ( 
             <div>
-                <h2>Global Statistics for Covid-19</h2>
+                <h2>Global Statistics for Covid-19 as of {date}</h2>
                 <p>New cases confirmed: {this.state.casesConfirmed}</p>
                 <br />
                 <p>Total Cases Confirmed: {this.state.totalCases}</p>
