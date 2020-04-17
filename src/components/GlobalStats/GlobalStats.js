@@ -1,7 +1,7 @@
 import React from "react";
 
-var tempDate = new Date();
-var date =    tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear()
+let tempDate = new Date();
+let date =    tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear()
 
 class GlobalStats extends React.Component {
     
