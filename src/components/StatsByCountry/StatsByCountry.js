@@ -19,13 +19,14 @@ class StatsByCountry extends React.Component {
     componentDidMount() {
         fetch("https://api.covid19api.com/total/country/united-states")
             .then(response => response.json())
-            .then(data => {this.setState({
-                    countryTitle: data[data.length-1].Country,
-                    confirmed: data[data.length-1].Confirmed,
-                    deaths: data[data.length-1].Deaths,
-                    recovered: data[data.length-1].Recovered,
+            .then(data => {
+                this.setState({
+                    countryTitle: data[data.length - 1].Country,
+                    confirmed: data[data.length - 1].Confirmed,
+                    deaths: data[data.length - 1].Deaths,
+                    recovered: data[data.length - 1].Recovered,
                     loading: false
-                })  
+                })
             })
     }
     handleChange(event) {
@@ -35,13 +36,14 @@ class StatsByCountry extends React.Component {
         event.preventDefault();
         fetch("https://api.covid19api.com/total/country/" + this.state.country)
             .then(response => response.json())
-            .then(data => {this.setState({
-                    countryTitle: data[data.length-1].Country,
-                    confirmed: data[data.length-1].Confirmed,
-                    deaths: data[data.length-1].Deaths,
-                    recovered: data[data.length-1].Recovered,
+            .then(data => {
+                this.setState({
+                    countryTitle: data[data.length - 1].Country,
+                    confirmed: data[data.length - 1].Confirmed,
+                    deaths: data[data.length - 1].Deaths,
+                    recovered: data[data.length - 1].Recovered,
                     loading: false
-                })  
+                })
             })
     }
 
@@ -52,12 +54,13 @@ class StatsByCountry extends React.Component {
                     <input type="text" value={this.state.country} name="country" placeholder="Enter Country" onChange={this.handleChange} />
                     <input type="submit" value="Submit" />
                 </form>
-                <h1>{this.state.countryTitle}</h1>
                 <br />
+                <h3>{this.state.countryTitle}</h3>
+
                 <p>Cases Confirmed: {this.state.confirmed}</p>
-                <br />
+
                 <p>Total Death Toll: {this.state.deaths}</p>
-                <br />
+
                 <p>Total Recovered: {this.state.recovered}</p>
             </div>
         )

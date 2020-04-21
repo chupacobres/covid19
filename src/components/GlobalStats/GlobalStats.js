@@ -38,7 +38,9 @@ class GlobalStats extends React.Component {
     render() {
         return ( 
             <div>
-                <h2>Global Statistics for Covid-19 as of {date}</h2>
+
+                <br />
+                <h3>Worldwide as of {date}</h3>
                 
                 <p>New cases confirmed: {this.state.casesConfirmed}</p>
                 
@@ -51,6 +53,8 @@ class GlobalStats extends React.Component {
                 <p>New Cases Recovered: {this.state.newRecovered}</p>
                 
                 <p>Total Cases Recovered: {this.state.totalRecovered}</p>
+
+                <br />
             </div>
         )
     }
