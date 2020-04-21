@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./components/Footer/Footer"
 
 import Header from "./components/Header/Header"
 import GlobalStats from "./components/GlobalStats/GlobalStats"
@@ -12,6 +13,7 @@ function App() {
       <Header />
      <GlobalStats />
      <StatsByCountry />
+     <Footer />
     </div>
   );
 }
