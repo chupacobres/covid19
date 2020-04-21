@@ -30,7 +30,7 @@ class GlobalStats extends React.Component {
                     newRecovered: data.Global.NewRecovered, 
                     totalRecovered: data.Global.TotalRecovered,
                     loading: false })
-                console.log(data.Global)
+                // console.log(data.Global)
             })
 
     }
