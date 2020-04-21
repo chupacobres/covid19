@@ -16,7 +16,7 @@ const Header = () => {
                             Covid 19 Statistics
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link style={{position: "absolute", bottom: 0, right: 20}} href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=7779">How to donate wisely</Nav.Link>
+                    <Nav.Link style={{position: "absolute", bottom: 0, right: 20}} href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=7779">Click to donate</Nav.Link>
                 </Nav>
             </Navbar>
 

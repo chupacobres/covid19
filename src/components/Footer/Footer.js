@@ -9,7 +9,7 @@ const Header = () => {
                 <Navbar.Brand href="#home">
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link style={{position: "absolute", bottom: -6, right: 20}} href="https://github.com/chupacobres">Github Code</Nav.Link>
+                    <Nav.Link style={{position: "absolute", bottom: -6, right: 20}} href="https://github.com/chupacobres">Github Repository</Nav.Link>
                 </Nav>
                 <Nav className="mr-auto">
                     <Nav.Link style={{position: "absolute", bottom: -6, left: 20}} href="https://github.com/chupacobres">Silly Code (c)</Nav.Link>

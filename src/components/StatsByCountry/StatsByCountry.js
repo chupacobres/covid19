@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "react-bootstrap/Form"
+import Card from "react-bootstrap/Card"
 
 
 class StatsByCountry extends React.Component {
@@ -51,25 +51,25 @@ class StatsByCountry extends React.Component {
     render() {
         return (
             <div>
+                <Card>
+                <br />
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.country} name="country" placeholder="Enter Country" onChange={this.handleChange} />
                     <input type="submit" value="Submit" />
                 </form>
-                <br />
-                <h3>{this.state.countryTitle}</h3>
+                    <Card.Body>
+                        <Card.Title> {this.state.countryTitle} </Card.Title>
+                        <Card.Text>
+                            <p>Cases Confirmed: {this.state.confirmed}</p>
 
-                <p>Cases Confirmed: {this.state.confirmed}</p>
+                            <p>Total Death Toll: {this.state.deaths}</p>
 
-                <p>Total Death Toll: {this.state.deaths}</p>
-
-                <p>Total Recovered: {this.state.recovered}</p>
+                            <p>Total Recovered: {this.state.recovered}</p>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
             </div>
         )
     }
 }
-
-
-
-
-
 export default StatsByCountry;

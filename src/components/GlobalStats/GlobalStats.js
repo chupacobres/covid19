@@ -1,10 +1,11 @@
 import React from "react";
+import Card from "react-bootstrap/Card"
 
 let tempDate = new Date();
-let date =    (tempDate.getMonth() + 1) + "/" + tempDate.getDate() + "/" + tempDate.getFullYear()
+let date = (tempDate.getMonth() + 1) + "/" + tempDate.getDate() + "/" + tempDate.getFullYear()
 
 class GlobalStats extends React.Component {
-    
+
     constructor() {
         super()
         this.state = {
@@ -22,40 +23,43 @@ class GlobalStats extends React.Component {
         fetch("https://api.covid19api.com/summary")
             .then(response => response.json())
             .then(data => {
-                this.setState({ 
-                    casesConfirmed: data.Global.NewConfirmed, 
-                    totalCases: data.Global.TotalConfirmed, 
-                    newDeaths: data.Global.NewDeaths, 
+                this.setState({
+                    casesConfirmed: data.Global.NewConfirmed,
+                    totalCases: data.Global.TotalConfirmed,
+                    newDeaths: data.Global.NewDeaths,
                     totalDeaths: data.Global.TotalDeaths,
-                    newRecovered: data.Global.NewRecovered, 
+                    newRecovered: data.Global.NewRecovered,
                     totalRecovered: data.Global.TotalRecovered,
-                    loading: false })
+                    loading: false
+                })
                 // console.log(data.Global)
             })
 
     }
 
     render() {
-        return ( 
+        return (
             <div>
+                <Card>
+                    <Card.Body>
+                        <Card.Title> Worldwide as of {date} </Card.Title>
+                        <Card.Text>
+                            <p>New cases confirmed: {this.state.casesConfirmed}</p>
 
-                <br />
-                <h3>Worldwide as of {date}</h3>
-                
-                <p>New cases confirmed: {this.state.casesConfirmed}</p>
-                
-                <p>Total Cases Confirmed: {this.state.totalCases}</p>
-                
-                <p>New Deaths Confirmed: {this.state.newDeaths}</p>
-                
-                <p>Total Deaths Confirmed: {this.state.totalDeaths}</p>
-                
-                <p>New Cases Recovered: {this.state.newRecovered}</p>
-                
-                <p>Total Cases Recovered: {this.state.totalRecovered}</p>
+                            <p>Total Cases Confirmed: {this.state.totalCases}</p>
 
-                <br />
-            </div>
+                            <p>New Deaths Confirmed: {this.state.newDeaths}</p>
+
+                            <p>Total Deaths Confirmed: {this.state.totalDeaths}</p>
+
+                            <p>New Cases Recovered: {this.state.newRecovered}</p>
+
+                            <p>Total Cases Recovered: {this.state.totalRecovered}</p>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+            </div >
         )
     }
 }
