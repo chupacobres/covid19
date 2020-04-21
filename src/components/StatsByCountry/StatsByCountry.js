@@ -1,15 +1,13 @@
 import React from "react";
 
-let urlToFetch = "https://api.covid19api.com/dayone/country/";
 
 class StatsByCountry extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             country: "",
             countryTitle: "",
             loading: false,
-            url: [],
             confirmed: "",
             deaths: "",
             recovered: ""
@@ -18,25 +16,33 @@ class StatsByCountry extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    componentDidMount() {
+        fetch("https://api.covid19api.com/total/country/united-states")
+            .then(response => response.json())
+            .then(data => {this.setState({
+                    countryTitle: data[data.length-1].Country,
+                    confirmed: data[data.length-1].Confirmed,
+                    deaths: data[data.length-1].Deaths,
+                    recovered: data[data.length-1].Recovered,
+                    loading: false
+                })  
+            })
+    }
     handleChange(event) {
         this.setState({ country: event.target.value });
     }
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({ url: urlToFetch + this.state.country });
-        fetch(this.state.url)
+        fetch("https://api.covid19api.com/total/country/" + this.state.country)
             .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    countryTitle: data[data.length - 2].Country,
-                    confirmed: data[data.length - 2].Confirmed,
-                    deaths: data[data.length - 2].Deaths,
-                    recovered: data[data.length -2].Recovered,
+            .then(data => {this.setState({
+                    countryTitle: data[data.length-1].Country,
+                    confirmed: data[data.length-1].Confirmed,
+                    deaths: data[data.length-1].Deaths,
+                    recovered: data[data.length-1].Recovered,
                     loading: false
-                })   
-                console.log(data[data.length - 2])       
+                })  
             })
-            this.setState({country:""})
     }
 
     render() {
