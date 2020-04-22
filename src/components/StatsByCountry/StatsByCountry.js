@@ -11,7 +11,8 @@ class StatsByCountry extends React.Component {
             loading: false,
             confirmed: "",
             deaths: "",
-            recovered: ""
+            recovered: "",
+            error: ""
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -38,33 +39,44 @@ class StatsByCountry extends React.Component {
         fetch("https://api.covid19api.com/total/country/" + this.state.country)
             .then(response => response.json())
             .then(data => {
-                this.setState({
-                    countryTitle: data[data.length - 1].Country,
-                    confirmed: data[data.length - 1].Confirmed,
-                    deaths: data[data.length - 1].Deaths,
-                    recovered: data[data.length - 1].Recovered,
-                    loading: false
-                })
-            })
+                if (data.message == undefined) {
+                    this.setState({
+                        error: "",
+                        countryTitle: data[data.length - 1].Country,
+                        confirmed: data[data.length - 1].Confirmed,
+                        deaths: data[data.length - 1].Deaths,
+                        recovered: data[data.length - 1].Recovered,
+                        loading: false
+                    })
+                }
+                if (data.message !== undefined) {
+                    this.setState({ error: "Country not found" })
+                }
+            }
+            )
     }
 
     render() {
         return (
             <div>
                 <Card>
-                <br />
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.country} name="country" placeholder="Enter Country" onChange={this.handleChange} />
-                    <input type="submit" value="Submit" />
-                </form>
+                    <Card.Text>
+                        {this.state.error}
+                    </Card.Text>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" value={this.state.country} name="country" placeholder="Enter Country" onChange={this.handleChange} />
+                        <input type="submit" value="Submit" />
+                    </form>
                     <Card.Body>
                         <Card.Title> {this.state.countryTitle} </Card.Title>
                         <Card.Text>
-                            <p>Cases Confirmed: {this.state.confirmed}</p>
-
-                            <p>Total Death Toll: {this.state.deaths}</p>
-
-                            <p>Total Recovered: {this.state.recovered}</p>
+                            Cases Confirmed: {this.state.confirmed}
+                        </Card.Text>
+                        <Card.Text>
+                            Total Death Toll: {this.state.deaths}
+                        </Card.Text>
+                        <Card.Text>
+                            Total Recovered: {this.state.recovered}
                         </Card.Text>
                     </Card.Body>
                 </Card>

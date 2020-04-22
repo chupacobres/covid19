@@ -32,7 +32,6 @@ class GlobalStats extends React.Component {
                     totalRecovered: data.Global.TotalRecovered,
                     loading: false
                 })
-                // console.log(data.Global)
             })
 
     }
@@ -44,17 +43,22 @@ class GlobalStats extends React.Component {
                     <Card.Body>
                         <Card.Title> Worldwide as of {date} </Card.Title>
                         <Card.Text>
-                            <p>New cases confirmed: {this.state.casesConfirmed}</p>
-
-                            <p>Total Cases Confirmed: {this.state.totalCases}</p>
-
-                            <p>New Deaths Confirmed: {this.state.newDeaths}</p>
-
-                            <p>Total Deaths Confirmed: {this.state.totalDeaths}</p>
-
-                            <p>New Cases Recovered: {this.state.newRecovered}</p>
-
-                            <p>Total Cases Recovered: {this.state.totalRecovered}</p>
+                            New cases confirmed: {this.state.casesConfirmed}
+                        </Card.Text>
+                        <Card.Text>
+                            Total Cases Confirmed: {this.state.totalCases}
+                        </Card.Text>
+                        <Card.Text>
+                            New Deaths Confirmed: {this.state.newDeaths}
+                        </Card.Text>
+                        <Card.Text>
+                            Total Deaths Confirmed: {this.state.totalDeaths}
+                        </Card.Text>
+                        <Card.Text>
+                            New Cases Recovered: {this.state.newRecovered}
+                        </Card.Text>
+                        <Card.Text>
+                            Total Cases Recovered: {this.state.totalRecovered}
                         </Card.Text>
                     </Card.Body>
                 </Card>
