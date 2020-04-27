@@ -1,5 +1,6 @@
 import React from "react";
-import Card from "react-bootstrap/Card"
+import Card from "react-bootstrap/Card";
+import Graph from "../../components/Graph/Graph"
 
 
 class StatsByCountry extends React.Component {
@@ -12,7 +13,9 @@ class StatsByCountry extends React.Component {
             confirmed: "",
             deaths: "",
             recovered: "",
-            error: ""
+            error: "",
+            dataFetched: [],
+            coordinatesData: []
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -27,6 +30,7 @@ class StatsByCountry extends React.Component {
                     confirmed: data[data.length - 1].Confirmed,
                     deaths: data[data.length - 1].Deaths,
                     recovered: data[data.length - 1].Recovered,
+                    dataFetched: data,
                     loading: false
                 })
             })
@@ -39,13 +43,14 @@ class StatsByCountry extends React.Component {
         fetch("https://api.covid19api.com/total/country/" + this.state.country)
             .then(response => response.json())
             .then(data => {
-                if (data.message == undefined) {
+                if (data.message === undefined) {
                     this.setState({
                         error: "",
                         countryTitle: data[data.length - 1].Country,
                         confirmed: data[data.length - 1].Confirmed,
                         deaths: data[data.length - 1].Deaths,
                         recovered: data[data.length - 1].Recovered,
+                        dataFetched: data,
                         loading: false
                     })
                 }
@@ -57,6 +62,10 @@ class StatsByCountry extends React.Component {
     }
 
     render() {
+        this.state.dataFetched.map(item => this.state.coordinatesData.push({ x: this.state.dataFetched.indexOf(item), y: item.Deaths }))
+
+        let half_length = Math.ceil(this.state.coordinatesData.length / 2);
+        let leftSide = this.state.coordinatesData.splice(0, half_length);
         return (
             <div>
                 <Card>
@@ -80,6 +89,12 @@ class StatsByCountry extends React.Component {
                         </Card.Text>
                     </Card.Body>
                 </Card>
+                <Card>
+                    <Graph
+                        dataForGraph={this.state.coordinatesData}
+                    />
+                </Card>
+
             </div>
         )
     }
