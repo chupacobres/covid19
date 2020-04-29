@@ -9,9 +9,9 @@ import {
   AreaSeries
 } from 'react-vis';
 
-const Graph=(props)=> {
+const Graph = (props) => {
   return (
-    <XYPlot width={600} height={300}>
+    <XYPlot margin={{ left: 100 }} width={600} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
