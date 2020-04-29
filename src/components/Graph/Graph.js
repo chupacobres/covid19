@@ -1,4 +1,5 @@
 import React from 'react';
+import Center from 'react-center';
 
 import {
   XYPlot,
@@ -11,6 +12,7 @@ import {
 
 const Graph = (props) => {
   return (
+    <Center>
     <XYPlot margin={{ left: 100 }} width={300} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
@@ -22,6 +24,7 @@ const Graph = (props) => {
         data={props.dataForGraph}
       />
     </XYPlot>
+    </Center>
   );
 }
 export default Graph
