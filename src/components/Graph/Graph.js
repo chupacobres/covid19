@@ -11,7 +11,7 @@ import {
 
 const Graph = (props) => {
   return (
-    <XYPlot margin={{ left: 100 }} width={600} height={300}>
+    <XYPlot margin={{ left: 100 }} width={300} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
