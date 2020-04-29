@@ -57,6 +57,7 @@ class StatsByCountry extends React.Component {
                 if (data.message !== undefined) {
                     this.setState({ error: "Country not found" })
                 }
+
             }
             )
     }
@@ -91,7 +92,7 @@ class StatsByCountry extends React.Component {
                 </Card>
                 <Card>
                     <br />
-                <Card.Title> {this.state.countryTitle}'s death toll since 01/22/2020 </Card.Title>
+                    <Card.Title> {this.state.countryTitle}'s death toll since 01/22/2020 </Card.Title>
                     <Graph
                         dataForGraph={this.state.coordinatesData}
                     />
